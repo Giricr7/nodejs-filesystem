@@ -22,8 +22,9 @@ loadAPP = () => {
       //creating the text files
       app.post('/write', (req, res) => {
         if (!fs.existsSync('C:/timestamp')) {
-            fs.mkdirSync('C:/timestamp',{ recursive: true });
-            res.send(createTimestamp())
+          fs.mkdirSync('C:/timestamp', { recursive: true });
+          let result = createTimestamp()
+            res.send(result)
           
         } else {
           res.send(createTimestamp())
@@ -37,12 +38,13 @@ loadAPP = () => {
         fs.readdirSync('C:/timestamp').forEach(file => {
           files.push(file)
         });
-        res.send(files);
+        let result = files
+        res.send(result);
       })
 
       //starting the server
     app.listen(PORT, (req, res) => {
-       res(console.log('server started successfully'));
+     console.log('server started successfully');
     })
   } catch (err) {
       console.error(err);
