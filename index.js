@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const fs = require('fs');
 const path = require('path')
 
@@ -42,7 +42,7 @@ loadAPP = () => {
 
       //starting the server
     app.listen(PORT, (req, res) => {
-        console.log('server started successfully');
+       res(console.log('server started successfully'));
     })
   } catch (err) {
       console.error(err);
